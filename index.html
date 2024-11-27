@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italian alkeet – Tervehdykset ja esittely</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .answer {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .feedback {
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Italian alkeet – Tervehdykset ja esittely</h1>
+        
+        <div class="question">
+            <p><strong>Tehtävä 1:</strong> Kuuntele ja valitse oikea tervehdys</p>
+            <p>Kuuntele äänitallenne ja valitse, mitä sanottiin:</p>
+            <audio id="audio" controls>
+                <source src="https://www.example.com/tervehdys.mp3" type="audio/mp3">
+                Selaimesi ei tue äänen toistoa.
+            </audio>
+        </div>
+
+        <div class="answer">
+            <button onclick="checkAnswer('A')">Hei, minun nimeni on Maria. Mikä sinun nimesi on?</button>
+            <button onclick="checkAnswer('B')">Hyvää huomenta, nimeni on Maria.</button>
+            <button onclick="checkAnswer('C')">Hyvää iltaa, Maria tässä.</button>
+        </div>
+
+        <div id="feedback" class="feedback"></div>
+
+        <div class="question">
+            <p><strong>Tehtävä 2:</strong> Vedä oikea tervehdys sopivan tilanteen kuvan päälle</p>
+            <p>Vedä ja pudota oikea tervehdys kuvien päälle:</p>
+            <div>
+                <img src="https://www.example.com/kahviajuovat.jpg" alt="Ihmisiä juomassa kahvia" width="200px">
+                <img src="https://www.example.com/ystavat_illalla.jpg" alt="Ystävät illalla" width="200px">
+                <img src="https://www.example.com/tervehdys.jpg" alt="Ihmiset halaamassa" width="200px">
+            </div>
+            <!-- Tässä voisi lisätä "drag-and-drop"-toiminnallisuuden, esimerkiksi JavaScriptin avulla -->
+        </div>
+        
+    </div>
+
+    <script>
+        function checkAnswer(answer) {
+            const feedback = document.getElementById('feedback');
+            if (answer === 'A') {
+                feedback.textContent = 'Oikein! Hyvin tehty.';
+                feedback.style.color = 'green';
+            } else {
+                feedback.textContent = 'Väärin, yritä uudelleen.';
+                feedback.style.color = 'red';
+            }
+        }
+    </script>
+    
+</body>
+</html>
