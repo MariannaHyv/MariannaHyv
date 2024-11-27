@@ -46,6 +46,25 @@
             font-size: 18px;
             color: green;
         }
+        .feedback-wrong {
+            color: red;
+        }
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        img:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -53,9 +72,9 @@
     <div class="container">
         <h1>Italian alkeet – Tervehdykset ja esittely</h1>
         
+        <!-- Kysymys 1: Äänitehtävä -->
         <div class="question">
             <p><strong>Tehtävä 1:</strong> Kuuntele ja valitse oikea tervehdys</p>
-            <p>Kuuntele äänitallenne ja valitse, mitä sanottiin:</p>
             <audio id="audio" controls>
                 <source src="https://www.example.com/tervehdys.mp3" type="audio/mp3">
                 Selaimesi ei tue äänen toistoa.
@@ -70,20 +89,22 @@
 
         <div id="feedback" class="feedback"></div>
 
+        <!-- Kysymys 2: Kuvan yhdistämistehtävä -->
         <div class="question">
-            <p><strong>Tehtävä 2:</strong> Vedä oikea tervehdys sopivan tilanteen kuvan päälle</p>
-            <p>Vedä ja pudota oikea tervehdys kuvien päälle:</p>
-            <div>
-                <img src="https://www.example.com/kahviajuovat.jpg" alt="Ihmisiä juomassa kahvia" width="200px">
-                <img src="https://www.example.com/ystavat_illalla.jpg" alt="Ystävät illalla" width="200px">
-                <img src="https://www.example.com/tervehdys.jpg" alt="Ihmiset halaamassa" width="200px">
+            <p><strong>Tehtävä 2:</strong> Valitse oikea tervehdys kuhunkin tilanteeseen:</p>
+            <div class="images">
+                <img src="https://www.example.com/kahviajuovat.jpg" alt="Ihmisiä juomassa kahvia" onclick="selectImage('kahvia')">
+                <img src="https://www.example.com/ystavat_illalla.jpg" alt="Ystävät illalla" onclick="selectImage('illalla')">
+                <img src="https://www.example.com/tervehdys.jpg" alt="Ihmiset halaamassa" onclick="selectImage('halaus')">
             </div>
-            <!-- Tässä voisi lisätä "drag-and-drop"-toiminnallisuuden, esimerkiksi JavaScriptin avulla -->
         </div>
         
+        <div id="image-feedback" class="feedback"></div>
+
     </div>
 
     <script>
+        // Tehtävä 1: Äänivastaus
         function checkAnswer(answer) {
             const feedback = document.getElementById('feedback');
             if (answer === 'A') {
@@ -92,6 +113,21 @@
             } else {
                 feedback.textContent = 'Väärin, yritä uudelleen.';
                 feedback.style.color = 'red';
+            }
+        }
+
+        // Tehtävä 2: Kuvan valinta
+        function selectImage(choice) {
+            const feedbackImage = document.getElementById('image-feedback');
+            if (choice === 'kahvia') {
+                feedbackImage.textContent = 'Hyvä valinta! Tämä on oikea tervehdys kahvia juoville ystäville.';
+                feedbackImage.style.color = 'green';
+            } else if (choice === 'illalla') {
+                feedbackImage.textContent = 'Hyvin valittu! Tämä tervehdys sopii illalla ystävien kesken.';
+                feedbackImage.style.color = 'green';
+            } else if (choice === 'halaus') {
+                feedbackImage.textContent = 'Tämä ei ollut oikea valinta tälle tilanteelle.';
+                feedbackImage.style.color = 'red';
             }
         }
     </script>
